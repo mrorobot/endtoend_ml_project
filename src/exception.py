@@ -1,5 +1,5 @@
 import sys # provide access to system specific parameters and command
-import logging
+from src.logger import logging
 def error_message_detail(error, error_detail: sys):
     """
     Extracts and formats detailed information about an exception.
@@ -41,3 +41,9 @@ class CustomException(Exception):
         str: The detailed error message.
         """
         return self.error_message
+if __name__=="__main__":
+    try:
+        a=10/0
+    except Exception as e:
+        logging.info("divide by zero")
+        raise CustomException(e,sys)
